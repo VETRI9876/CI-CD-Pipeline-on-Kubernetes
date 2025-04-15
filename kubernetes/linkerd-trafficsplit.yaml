@@ -1,0 +1,11 @@
+apiVersion: split.smi-spec.io/v1alpha2
+kind: TrafficSplit
+metadata:
+  name: flask-app-split
+spec:
+  service: flask-app
+  backends:
+    - service: flask-app-v1
+      weight: 80
+    - service: flask-app-v2
+      weight: 20
