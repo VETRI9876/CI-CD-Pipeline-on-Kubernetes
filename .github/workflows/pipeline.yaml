@@ -61,7 +61,7 @@ jobs:
         run: |
           kubectl apply -f kubernetes/linkerd-trafficsplit.yaml
 
-      - name: Deploy Linkerd Monitoring (Optional)
+      - name: Deploy Linkerd Monitoring
         run: |
           kubectl apply -f kubernetes/linkerd-serviceprofile.yaml
 
