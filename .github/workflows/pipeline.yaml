@@ -36,7 +36,7 @@ jobs:
       - name: Set up kubectl
         uses: azure/setup-kubectl@v1
         with:
-          version: 'v1.24.0'
+          version: 'v1.24.0'  # Corrected to 'version'
 
       - name: Log in to Azure
         uses: azure/login@v1
@@ -81,12 +81,7 @@ jobs:
           echo "To monitor traffic, run: linkerd dashboard"
           kubectl get trafficsplit
 
-      - name: Install Linkerd CLI
-        run: |
-          curl -sL https://run.linkerd.io/install | sh
-          export PATH=$PATH:$HOME/.linkerd2/bin
-          linkerd version  # Verify installation
-
+      # 🆕 (Optional) Script to monitor traffic distribution via Linkerd Dashboard
       - name: Monitor Traffic Distribution (optional)
         run: |
           echo "Monitor traffic distribution with Linkerd Dashboard"
