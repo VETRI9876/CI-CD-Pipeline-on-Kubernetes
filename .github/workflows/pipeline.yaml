@@ -80,9 +80,3 @@ jobs:
         run: |
           echo "To monitor traffic, run: linkerd dashboard"
           kubectl get trafficsplit
-
-      # 🆕 (Optional) Script to monitor traffic distribution via Linkerd Dashboard
-      - name: Monitor Traffic Distribution (optional)
-        run: |
-          echo "Monitor traffic distribution with Linkerd Dashboard"
-          linkerd dashboard
