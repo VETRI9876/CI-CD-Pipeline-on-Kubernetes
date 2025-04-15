@@ -33,22 +33,28 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up kubectl
-        uses: azure/setup-kubectl@v1
-        with:
-          kubectl-version: 'v1.24.0'
-
       - name: Set up Azure credentials
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Set up Azure CLI
+        uses: azure/CLI@v1
+
+      - name: Get AKS credentials
+        run: |
+          az aks get-credentials --resource-group myResourceGroup --name MyAKSCluster --overwrite-existing
+
+      - name: Set up kubectl
+        uses: azure/setup-kubectl@v3
+        with:
+          version: v1.24.0
 
       - name: Deploy Flask app to AKS
         run: |
           kubectl apply -f kubernetes/deployment.yaml
           kubectl apply -f kubernetes/service.yaml
 
-      # Deploy Linkerd configurations for traffic routing
       - name: Deploy Linkerd configurations for Flask app
         run: |
           kubectl apply -f kubernetes/linkerd-virtualservice.yaml
