@@ -36,7 +36,7 @@ jobs:
       - name: Set up kubectl
         uses: azure/setup-kubectl@v1
         with:
-          kubectl-version: 'v1.24.0'
+          version: 'v1.24.0' 
 
       - name: Log in to Azure
         uses: azure/login@v1
@@ -80,3 +80,9 @@ jobs:
         run: |
           echo "To monitor traffic, run: linkerd dashboard"
           kubectl get trafficsplit
+
+      
+      - name: Monitor Traffic Distribution (optional)
+        run: |
+          echo "Monitor traffic distribution with Linkerd Dashboard"
+          linkerd dashboard
