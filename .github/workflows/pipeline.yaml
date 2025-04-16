@@ -36,7 +36,7 @@ jobs:
       - name: Set up kubectl
         uses: azure/setup-kubectl@v1
         with:
-          version: 'v1.24.0'  # Corrected to 'version'
+          version: 'v1.24.0'
 
       - name: Log in to Azure
         uses: azure/login@v1
